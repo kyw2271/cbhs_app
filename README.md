@@ -9,12 +9,18 @@
 
 ## 개발 환경 및 구현 프레임 워크
 ### Front-end
-* Flutter
+* Flutter - 성현 주도
 
 ### back-end
-* django + python
+* django + python - 영우 주도
 
-
-## 버젼별 구현 기능
 ----------
+
+## 버젼별 구현 기능 및 코드 리뷰
+
 ### ver 0.1
+#### Front
+내용 작성
+
+#### Back
+내용작성
