@@ -28,3 +28,13 @@
 
 #### Back
 내용작성
+
+------------
+## References
+### Flutter + django 구현 참고
+* https://wooogy-egg.tistory.com/category/%EA%B8%B0%EC%88%A0%EA%B0%9C%EB%B0%9C/Django
+* https://parkhyeonchae.github.io/archives/3/
+
+### json 파싱관련
+
+### 기타 
