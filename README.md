@@ -19,13 +19,29 @@
     * 복귀시간
     * 층
 
+## 개발 인원 및 역할 분담
+
+### 성현
+   프론트 엔드 전반
+   ux/ui 디자인
+   파서 엔진 설계
+   Git 관리
+   
+### 영우
+   백 엔드 전반
+   PM
+   백엔드 구조 설계
+   파서 엔진 설계
+   Git 관리
+  
 
 ## 개발 환경 및 구현 프레임 워크
 ### Front-end
-* Flutter - 성현 주도
+* Flutter
 
 ### back-end
-* django + python - 영우 주도
+* django + python
+* 파싱 엔진 - 셀레니움? 숲?
 
 ----------
 
@@ -45,10 +61,13 @@
 ------------
 
 ## References
-### Flutter + django 구현 참고
+### Flutter 구현 참고
+
+###  django 구현 참고
 * https://www.inflearn.com/course/%ED%94%8C%EB%9F%AC%ED%84%B0-%EC%9E%A5%EA%B3%A0-%ED%80%B4%EC%A6%88%EC%95%B1-%EC%84%9C%EB%B2%84-%ED%92%80%EC%8A%A4%ED%83%9D
 * https://wooogy-egg.tistory.com/category/%EA%B8%B0%EC%88%A0%EA%B0%9C%EB%B0%9C/Django
 * https://parkhyeonchae.github.io/archives/3/
+* https://opentutorials.org/course/3718
 
 ### json 파싱관련 - 식사, 공지 파싱 엔진
 
