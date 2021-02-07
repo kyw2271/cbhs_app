@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/Cupertino.dart';
 
 Widget SplashScreen() {
-  return MaterialApp(
-    home: Scaffold(
-      body: Center(
+  return CupertinoApp(
+    home: CupertinoPageScaffold(
+      child: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -21,8 +21,8 @@ Widget SplashScreen() {
               ),
               Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                  child: CupertinoActivityIndicator(
+                    animating: true,
                   ))
             ],
           )),

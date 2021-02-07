@@ -1,6 +1,6 @@
-# cbhs_app
+# omnyomnyom
 
-A new Flutter project.
+CBHS Application
 
 ## Getting Started
 

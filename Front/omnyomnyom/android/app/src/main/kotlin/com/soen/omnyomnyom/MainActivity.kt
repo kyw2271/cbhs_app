@@ -1,4 +1,4 @@
-package com.example.cbhs_app
+package com.soen.omnyomnyom
 
 import io.flutter.embedding.android.FlutterActivity
 
