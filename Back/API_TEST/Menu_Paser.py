@@ -138,5 +138,5 @@ if __name__ == '__main__':
         print(d + '\n')
 
 
-        
+
         Cbhs1_Menu(Days=date, B=b, L=l, D=d, B_num=0, D_num=0, L_num=0).save()
