@@ -40,9 +40,13 @@
 ### Front-end
 * Flutter
 
+
 ### back-end
-* django + python
-* 파싱 엔진 - 셀레니움? 숲?
+1. django 3.2 / django rest framework / sqlite
+2. python 3.8
+4. ba4 / requests / lxml - parser
+5. IDE - pycharm / postman
+
 
 ----------
 
@@ -57,10 +61,7 @@
 내용 작성
 
 #### Back
-####사용 언어/모듈/Framework 버젼
-1. django 3.2 / django rest framework
-2. python 3.8
-4. ba4 / requests / lxml
+
 
 ------------
 
