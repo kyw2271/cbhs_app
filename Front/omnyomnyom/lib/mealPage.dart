@@ -36,12 +36,12 @@ class MealCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-              margin: EdgeInsets.only(bottom: 8),
+              margin: EdgeInsets.only(bottom: 10),
               child: Text(
                 date,
                 style: TextStyle(
@@ -51,7 +51,8 @@ class MealCard extends StatelessWidget {
                 ),
               )),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               color: const Color(0xffffffff),
