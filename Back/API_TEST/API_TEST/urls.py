@@ -19,22 +19,18 @@ from django.urls import path
 from django.conf.urls import url,include
 from rest_framework import routers
 
-from menu_data import views
-from menu_data.views import Cbhs1_Menu_ViewSet
+from rest_framework_swagger.views import get_swagger_view
+
+import menu_data.api
 
 router = routers.DefaultRouter()
-
-
-#router.register(r'cbhs1', views.Cbhs1_Menu_ViewSet)
-
-#router.register(r'groups', views.GroupViewSet)
-
+router.register('cbhs1_menu', menu_data.api.Cbhs1_Menu_ViewSet)
 
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('api/', include('rest_framework.urls', namespace='rest_framework')),
-    path('cbhs/', include('menu_data.urls'))
+    url(r'^api/doc', get_swagger_view(title='Rest API Document')),
+    url(r'^api/', include((router.urls, 'menu_data'), namespace='api')),
 
 ]
