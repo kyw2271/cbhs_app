@@ -38,7 +38,7 @@ class _QrPageState extends State<QrPage> {
       navigationBar: CupertinoNavigationBar(
         middle: Text(
           "QR Code",
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(fontSize: 18),
         ),
       ),
       child: Container(

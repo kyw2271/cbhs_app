@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:omnyomnyom/mealPage.dart';
 import 'package:omnyomnyom/qrPage.dart';
+import 'package:omnyomnyom/settingPage.dart';
 
 import 'SplashScreen.dart';
 
@@ -76,7 +77,7 @@ class MyHome extends StatelessWidget {
           case 2:
             return QrPage();
           default:
-            return ErrorWidget();
+            return SettingPage();
         }
       },
     );
@@ -88,18 +89,7 @@ class TempWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("Temp page!"),
-      ),
-    );
-  }
-}
-
-class ErrorWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("Error page!"),
+        child: Text("Anounce page!"),
       ),
     );
   }
