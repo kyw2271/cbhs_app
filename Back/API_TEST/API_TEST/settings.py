@@ -26,7 +26,7 @@ SECRET_KEY = '1n0-3i4a4g=(2(@*gi5yw%+r48p4r=sw-s+@pu_cr_31pvjqw9'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+#ALLOWED_HOSTS = ['192.168.0.2']
 
 # Application definition
 
@@ -38,10 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #add APPS
     'rest_framework',
     'menu_data',
+    'django_crontab',
+    'django_apscheduler',
 ]
 
+
+CRONJOBS = [
+   # (, 'Menu_Paser.schedule_05m_menu_cbhs1','>>/log/menu_paser_list.log'),
+]
+
+SCHEDULER_CONFIG = {
+    "apscheduler.jobstores.default": {
+        "class": "django_apscheduler.jobstores:DjangoJobStore"
+    },
+    'apscheduler.executors.processpool': {
+        "type": "threadpool"
+    },
+}
+SCHEDULER_AUTOSTART = True
 
 
 MIDDLEWARE = [

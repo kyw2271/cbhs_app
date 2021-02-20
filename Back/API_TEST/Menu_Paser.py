@@ -61,10 +61,18 @@ def cbhs_paser(cbhs=0, weeks=0):
                 L = L.replace('\t', '')
                 D = D.replace('\t', '')
 
+                B = B.replace('\n', ' ')
+                L = L.replace('\n', ' ')
+                D = D.replace('\n', ' ')
+
+                B = B.replace('\r', '')
+                L = L.replace('\r', '')
+                D = D.replace('\r', '')
+
             else :
-                B = '공란'
-                L = '공란'
-                D = '공란'
+                B = "메뉴가 없어요."
+                L = "메뉴가 없어요."
+                D = "메뉴가 없어요."
 
         # 동서울관
         elif (cbhs == 2):
@@ -80,9 +88,9 @@ def cbhs_paser(cbhs=0, weeks=0):
                 D = D.replace(",", "\n")
 
             else:
-                B = '공란'
-                L = '공란'
-                D = '공란'
+                B = "메뉴가 없어요."
+                L = "메뉴가 없어요."
+                D = "메뉴가 없어요."
 
 
 
@@ -120,23 +128,67 @@ def cbhs_paser(cbhs=0, weeks=0):
     return week_menu
 
 
+def schedule_05m_menu_cbhs1():
+    for i in range(0,2) :
+        menu_list = cbhs_paser(1, i)
+
+        for dic_menu in menu_list:
+            str_date = dic_menu.get('DATE')
+            date = datetime.strptime(str_date, "%y.%m.%d")
+
+            b = dic_menu.get('B')
+            l = dic_menu.get('L')
+            d = dic_menu.get('D')
+
+            print(date)
+            print(b + '\n')
+            print(l + '\n')
+            print(d + '\n')
+
+            # 해당 메뉴가 존재하면, BLD 바꿔주기
+            if Cbhs1_Menu.objects.filter(Days = date).exists():
+
+                Cbhs1_Menu.objects.filter(Days=date).B = b
+                Cbhs1_Menu.objects.filter(Days=date).L = l
+                Cbhs1_Menu.objects.filter(Days=date).D = d
+            else:
+                print("추가")
+                Cbhs1_Menu(Days=date, B=b, L=l, D=d, B_num=0, D_num=0, L_num=0).save()
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
-    menu_list = cbhs_paser(1, 0)
 
-    for dic_menu in menu_list:
-        str_date = dic_menu.get('DATE')
-        print(str_date)
-        date = datetime.strptime(str_date, "%y.%m.%d")
+    for i in range(0,2) :
+        menu_list = cbhs_paser(1, i)
 
-        b = dic_menu.get('B')
-        l = dic_menu.get('L')
-        d = dic_menu.get('D')
+        for dic_menu in menu_list:
+            str_date = dic_menu.get('DATE')
+            date = datetime.strptime(str_date, "%y.%m.%d")
 
-        print(date)
-        print(b + '\n')
-        print(l + '\n')
-        print(d + '\n')
+            b = dic_menu.get('B')
+            l = dic_menu.get('L')
+            d = dic_menu.get('D')
 
+            print(date)
+            print(b + '\n')
+            print(l + '\n')
+            print(d + '\n')
 
+            # 해당 메뉴가 존재하면, BLD 바꿔주기
+            if Cbhs1_Menu.objects.filter(Days = date).exists():
 
-        Cbhs1_Menu(Days=date, B=b, L=l, D=d, B_num=0, D_num=0, L_num=0).save()
+                Cbhs1_Menu.objects.filter(Days=date).B = b
+                Cbhs1_Menu.objects.filter(Days=date).L = l
+                Cbhs1_Menu.objects.filter(Days=date).D = d
+            else:
+                print("추가")
+                Cbhs1_Menu(Days=date, B=b, L=l, D=d, B_num=0, D_num=0, L_num=0).save()
