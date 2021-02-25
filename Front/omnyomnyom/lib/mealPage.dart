@@ -1,7 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'menu.dart';
+
 class MealPage extends StatelessWidget {
+  List<Menu> menuList;
+
+  MealPage({@required this.menuList});
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -18,8 +24,14 @@ class MealPage extends StatelessWidget {
           SliverList(
             // 아이템을 빌드하기 위해서 delegate 항목을 구성함
             // SliverChildBuilderDelegate는 ListView.builder 처럼 리스트의 아이템을 생성해줌
-            delegate: SliverChildBuilderDelegate((context, index) => MealCard(),
-                childCount: 4),
+            delegate: SliverChildBuilderDelegate(
+                (context, index) => MealCard(
+                      breakfast: menuList[index].b,
+                      lunch: menuList[index].l,
+                      dinner: menuList[index].d,
+                      date: menuList[index].days,
+                    ),
+                childCount: 7),
           ),
         ],
       ),
@@ -28,10 +40,16 @@ class MealPage extends StatelessWidget {
 }
 
 class MealCard extends StatelessWidget {
-  String date = "2021년 01월 31일";
-  String breakfast = "잡곡밥 부추올갱이국 고추잡채*꽃빵 배추김치 도토리묵*양념장 구운김 도라지무침 우유";
-  String lunch = "잡곡밥 부추올갱이국 고추잡채*꽃빵 배추김치 도토리묵*양념장 구운김 도라지무침 우유";
-  String dinner = "잡곡밥 부추올갱이국 고추잡채*꽃빵 배추김치 도토리묵*양념장 구운김 도라지무침 우유";
+  String date;
+  String breakfast;
+  String lunch;
+  String dinner;
+
+  MealCard(
+      {@required this.date,
+      @required this.breakfast,
+      @required this.lunch,
+      @required this.dinner});
 
   @override
   Widget build(BuildContext context) {
@@ -124,3 +142,5 @@ class MealCardMenu extends StatelessWidget {
     );
   }
 }
+
+// {"count":7,"next":null,"previous":null,"results":[{"Days":"2021-02-21","B":"잡곡밥 배추된장국 소불고기 두부조림 파래자반무침 깍두기 식빵/슬라이스치즈 우유/시리얼 딸기잼/버터","L":"잡곡밥  호박고추장찌개  코다리무조림  분홍소시지전  리플샐러드  배추김치  과일","D":"비빔밥  청국장  계란후라이  오이맛살초무침  배추김치"},{"Days":"2021-02-22","B":"잡곡밥 북어무국 돈육춘장볶음 메추리알어묵조림 아삭이고추무침 배추김치 모닝빵 우유/시리얼 딸기잼/버터","L":"잡곡밥  팽이버섯장국  안동찜닭  시금치나물  마파가지  알타리김치  과일","D":"잡곡밥  맑은홍합국  돈대패콩나물볶음  계란말이  파래자반볶음  알타리김치"},{"Days":"2021-02-23","B":"소고기야채죽 꽈리고추멸치볶음 두부간장조림 무말랭이무침 배추김치 식빵/슬라이스치즈 우유/시리얼 딸기잼/버터","L":"라멘  유부초밥  방울토마토샐러드  구운계란  통배추겉절이  과일","D":"잡곡밥  계란파국  소고기떡찜  어묵야채볶음  애호박새우젓볶음  참나물  깍두기"},{"Days":"2021-02-24","B":"잡곡밥 수제비국 돈사태찜 참나물무침 무나물 배추김치 모닝빵 우유/시리얼 딸기잼/버터","L":"잡곡밥  동태알탕  돈육강정  오븐계란찜  청경채겉절이  배추김치  과일","D":"잡곡밥  우렁된장찌개  통삼겹오븐구이  콩나물파채무침  상추*쌈장  배추김치"},{"Days":"2021-02-25","B":"잡곡밥 어묵무국 소불고기 연근조림 근대쌈장무침 배추김치 식빵/슬라이스치즈 우유/시리얼 딸기잼/버터","L":"수제치킨까스  브로콜리스프  꽃맛살사과샐러드  감자범벅  오이소박이  과일","D":"새우볶음밥  유부장국  순살파닭  청포묵김가루무침  배추김치  부럼"},{"Days":"2021-02-26","B":"프렌치토스트 스크램블에그 흑임자샐러드 과일","L":"오곡밥  소고기무국  닭갈비  삼색나물  구운김  찰떡  통배추겉절이","D":""},{"Days":"2021-02-27","B":"잡곡밥 콩나물된장국 오리훈제야채볶음 알감자조림 느타리버섯볶음 알타리김치 모닝빵 우유/시리얼 딸기잼/버터","L":"잡곡밥  육개장  닭굴소스볶음  섬초나물무침  새송이버섯볶음  배추김치  과일","D":"잡곡밥  오징어무국  삼치엿장조림  부추김치전  파래자반무침  배추김치"}]}
