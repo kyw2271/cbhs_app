@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
 
 CRONJOBS = [
-   ('* * * * *', 'app.Menu_Paser.schedule_menu_cbhs', '>>menu_paser_list.log'),
+   ('* * * * *', 'API_TEST.Menu_Paser.schedule_menu_cbhs', '>>menu_paser_list.log'),
 ]
 
 SCHEDULER_CONFIG = {
