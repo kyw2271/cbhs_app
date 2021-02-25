@@ -38,10 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #add APPS
     'rest_framework',
     'menu_data',
+    'django_crontab',
+    'django_apscheduler',
 ]
 
+
+CRONJOBS = [
+   ('* * * * *', 'app.Menu_Paser.schedule_menu_cbhs', '>>menu_paser_list.log'),
+]
+
+SCHEDULER_CONFIG = {
+    "apscheduler.jobstores.default": {
+        "class": "django_apscheduler.jobstores:DjangoJobStore"
+    },
+    'apscheduler.executors.processpool': {
+        "type": "threadpool"
+    },
+}
+SCHEDULER_AUTOSTART = True
 
 
 MIDDLEWARE = [
