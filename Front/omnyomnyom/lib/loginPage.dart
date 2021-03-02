@@ -11,6 +11,7 @@ class LoginPage extends StatelessWidget {
     var qrLogin = Hive.box('setting');
 
     return CupertinoApp(
+        theme: CupertinoThemeData(brightness: Brightness.light),
         home: CupertinoPageScaffold(
             backgroundColor: Color(0xfff2f1f6),
             // navigationBar: CupertinoNavigationBar(

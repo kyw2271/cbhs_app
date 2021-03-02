@@ -3,7 +3,7 @@ import 'package:flutter/Cupertino.dart';
 Widget SplashScreen() {
   return CupertinoApp(
     home: CupertinoPageScaffold(
-      backgroundColor: Color.fromARGB(255, 49, 115, 95),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       child: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,7 +18,7 @@ Widget SplashScreen() {
               SizedBox(
                   height: 200,
                   width: 200,
-                  child: Image.asset("assets/images/logo.jpg")),
+                  child: Image.asset("assets/images/logo.png")),
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CupertinoActivityIndicator(

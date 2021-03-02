@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:omnyomnyom/errorCard.dart';
-import 'package:omnyomnyom/gloabal.dart';
-import 'package:omnyomnyom/main.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QrPage extends StatefulWidget {
@@ -84,7 +82,7 @@ class _QrPageState extends State<QrPage> {
           // Load Thumbnail Articles
 
           if (snapshot.data == 0) {
-            return ErrorCard(errorString: "설정 탭에서 로그인을 먼저 진행해주세요!");
+            return ErrorCard(errorString: "(서서울관) 설정 탭에서 로그인을 먼저 진행해주세요!");
           } else if (snapshot.data == null) {
             return ErrorCard(errorString: "로그인 정보에 오류가 있습니다!");
           } else {

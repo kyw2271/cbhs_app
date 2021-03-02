@@ -1,10 +1,7 @@
-import 'dart:convert';
-
-import 'package:about/about.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:omnyomnyom/gloabal.dart';
+import 'package:omnyomnyom/aboutPage.dart';
 import 'package:omnyomnyom/loginPage.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,9 +14,11 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   var setting = Hive.box('setting');
   List<String> location = ["선택없음", "서서울관", "동서울관", "청주관"];
+  List<String> startSubtitle = ["식단", "출입", "설정"];
   int id = 0000;
 
   int result;
+  int start;
   bool fingerPrint = false;
 
   void actionsheet(BuildContext context) async {
@@ -49,16 +48,16 @@ class _SettingPageState extends State<SettingPage> {
                 Navigator.pop(context);
               },
             ),
-            CupertinoActionSheetAction(
-              child: const Text('청주관'),
-              onPressed: () {
-                result = 3;
-                Navigator.pop(context);
-              },
-            )
+            // CupertinoActionSheetAction(
+            //   child: const Text('청주관'),
+            //   onPressed: () {
+            //     result = 3;
+            //     Navigator.pop(context);
+            //   },
+            // )
           ],
           cancelButton: CupertinoActionSheetAction(
-            child: const Text('Cancel'),
+            child: const Text('취소'),
             isDefaultAction: true,
             onPressed: () {
               Navigator.pop(context);
@@ -75,11 +74,64 @@ class _SettingPageState extends State<SettingPage> {
     setting.put('location', result.toString());
   }
 
+  void startActionsheet(BuildContext context) async {
+    await showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => CupertinoActionSheet(
+          title: Container(
+            padding: EdgeInsets.only(top: 10),
+            child: const Text(
+              '시작회면 선택',
+              style: TextStyle(fontSize: 22, color: Colors.black),
+            ),
+          ),
+          message: const Text('앱 시작시 보여질 화면을 선택해주세요.'),
+          actions: <Widget>[
+            CupertinoActionSheetAction(
+              child: const Text('식단'),
+              onPressed: () {
+                start = 0;
+                Navigator.pop(context);
+              },
+            ),
+            CupertinoActionSheetAction(
+              child: const Text('QR코드'),
+              onPressed: () {
+                start = 1;
+                Navigator.pop(context);
+              },
+            ),
+            CupertinoActionSheetAction(
+              child: const Text('설정'),
+              onPressed: () {
+                start = 2;
+                Navigator.pop(context);
+              },
+            )
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            child: const Text('취소'),
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )),
+    );
+
+    // if start invaild value : cancel before select anything.
+    if (start == null) {
+      start = 0;
+    }
+
+    debugPrint("start : " + start.toString());
+    setting.put('start', start.toString());
+  }
+
   void launchEmailSubmission() async {
     final Uri params = Uri(
         scheme: 'mailto',
-        path: 'stationsoen@gmail.com',
-        queryParameters: {'subject': '충북학사 버그 리포트', 'body': ''});
+        path: 'stationsoen@gmail.com,kyw2271@naver.com',
+        queryParameters: {'subject': '버그리포트:', 'body': ''});
     String url = params.toString();
     if (await canLaunch(url)) {
       await launch(url);
@@ -131,6 +183,14 @@ class _SettingPageState extends State<SettingPage> {
                                     LoginPage()));
                       },
                     ),
+                    SettingsTile(
+                      title: '시작화면 선택',
+                      subtitle: startSubtitle[int.parse(setting.get('start'))],
+                      leading: Icon(CupertinoIcons.pin),
+                      onPressed: (BuildContext context) {
+                        startActionsheet(context);
+                      },
+                    ),
                     // SettingsTile.switchTile(
                     //   title: 'Use fingerprint',
                     //   leading: Icon(Icons.fingerprint),
@@ -144,20 +204,33 @@ class _SettingPageState extends State<SettingPage> {
                   ],
                 ),
                 SettingsSection(
-                    title: '관하여',
+                    title: '앱 정보',
                     titleTextStyle: TextStyle(fontSize: 16),
                     tiles: [
                       SettingsTile(
-                        title: '관하여',
+                        title: '정보',
                         leading: Icon(CupertinoIcons.person),
                         onPressed: (BuildContext context) {
-                          showAboutDialog(
-                              context: context,
-                              applicationVersion: "0.0.1",
-                              applicationName: "충북학사",
-                              applicationLegalese: "Hello World!",
-                              applicationIcon: ImageIcon(
-                                  AssetImage("assets/images/logo.jpg")));
+                          // showAboutDialog(
+                          //     context: context,
+                          //     applicationVersion: "1.0.0",
+                          //     applicationName: "옴놈뇸",
+                          //     applicationLegalese: "개발자",
+                          //     applicationIcon: ImageIcon(
+                          //         AssetImage("assets/images/logo.png")));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => AboutPage(
+                                        appName: "앙냥냥",
+                                        appVersion: "0.1.0",
+                                        developers:
+                                            "Sunghyun(StationSoen@github)\nYoungwoo(kyw2271@github)",
+                                        logoDesigner:
+                                            "조하연(loosainfjn@naver.com)",
+                                        githubLink:
+                                            "github.com/kyw2271/cbhs_app",
+                                      )));
                           debugPrint(setting.get('id').toString());
                         },
                       ),

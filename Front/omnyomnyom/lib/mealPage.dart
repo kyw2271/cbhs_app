@@ -64,8 +64,15 @@ class MealPage extends StatelessWidget {
 
       // if location is "청주관",
     } else if (setting.get('location') == '3') {
+      return ErrorCard(
+        errorString: "Something Wrong",
+      );
       // else, There's something Wrong!
-    } else {}
+    } else {
+      return ErrorCard(
+        errorString: "Something Wrong",
+      );
+    }
   }
 }
 

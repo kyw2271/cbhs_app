@@ -23,11 +23,13 @@ void main() async {
   List<String> hiveSetting = ['location', 'id', 'pw'];
 
   for (int i = 0; i < hiveSetting.length; i++) {
-    if (settingHive.get((hiveSetting[i])) == null) {
-      settingHive.put('location', "0");
-      settingHive.put('id', '0');
-      settingHive.put('pw', '0');
+    if (settingHive.get(hiveSetting[i]) == null) {
+      settingHive.put(hiveSetting[i], "0");
+      settingHive.put('start', '2');
     }
+  }
+  if (settingHive.get('start') == null) {
+    settingHive.put('start', '2');
   }
 
   // check if location is "0"
@@ -89,6 +91,7 @@ class MyApp extends StatelessWidget {
           debugPrint("Successfully load menu");
           // Load Thumbnail Articles
           return CupertinoApp(
+            theme: CupertinoThemeData(brightness: Brightness.light),
             localizationsDelegates: [
               DefaultMaterialLocalizations.delegate,
               DefaultCupertinoLocalizations.delegate,
@@ -117,6 +120,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHome extends StatelessWidget {
+  var setting = Hive.box('setting');
+
   final List<BottomNavigationBarItem> bottomItems = [
     // BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: "홈"),
     BottomNavigationBarItem(
@@ -133,7 +138,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        currentIndex: 1,
+        currentIndex: int.parse(setting.get('start')),
         items: bottomItems,
         iconSize: 20,
       ),
