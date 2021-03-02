@@ -141,7 +141,8 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   void _launchURL() async {
-    const url = 'https://github.com/kyw2271/cbhs_app/';
+    const url =
+        'https://github.com/kyw2271/cbhs_app/blob/main/Privacy%20Statement';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
