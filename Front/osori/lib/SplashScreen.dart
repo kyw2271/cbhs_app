@@ -2,6 +2,7 @@ import 'package:flutter/Cupertino.dart';
 
 Widget SplashScreen() {
   return CupertinoApp(
+    debugShowCheckedModeBanner: false,
     home: CupertinoPageScaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       child: Center(

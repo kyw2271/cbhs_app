@@ -19,6 +19,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
+        debugShowCheckedModeBanner: false,
         theme: CupertinoThemeData(brightness: Brightness.light),
         home: CupertinoPageScaffold(
             backgroundColor: Colors.white,

@@ -95,7 +95,7 @@ class _SettingPageState extends State<SettingPage> {
               },
             ),
             CupertinoActionSheetAction(
-              child: const Text('QR코드'),
+              child: const Text('출입'),
               onPressed: () {
                 start = 1;
                 Navigator.pop(context);
@@ -130,7 +130,7 @@ class _SettingPageState extends State<SettingPage> {
   void launchEmailSubmission() async {
     final Uri params = Uri(
         scheme: 'mailto',
-        path: 'stationsoen@gmail.com,kyw2271@naver.com',
+        path: 'optid77@gmail.com,kyw2271@naver.com',
         queryParameters: {'subject': '버그리포트:', 'body': ''});
     String url = params.toString();
     if (await canLaunch(url)) {
@@ -141,11 +141,11 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   void _launchURL() async {
-    const url = 'https://flutter.io';
+    const url = 'https://github.com/kyw2271/cbhs_app/';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      throw 'Could not launch $url';
+      debugPrint('Could not launch $url');
     }
   }
 
@@ -231,7 +231,7 @@ class _SettingPageState extends State<SettingPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) => AboutPage(
-                                        appName: "앙냥냥",
+                                        appName: "오소리",
                                         appVersion: "0.1.0",
                                         developers:
                                             "Sunghyun(StationSoen@github)\nYoungwoo(kyw2271@github)",
