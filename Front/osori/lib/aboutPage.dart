@@ -44,7 +44,7 @@ class AboutPage extends StatelessWidget {
                           child: Image.asset("assets/images/logo.png")),
                       SizedBox(height: 20),
                       Container(
-                          margin: EdgeInsets.only(bottom: 40),
+                          margin: EdgeInsets.only(bottom: 30),
                           child: Text(
                             appName + " : Version " + appVersion,
                             style: TextStyle(

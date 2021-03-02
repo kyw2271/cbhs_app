@@ -140,6 +140,15 @@ class _SettingPageState extends State<SettingPage> {
     }
   }
 
+  void _launchURL() async {
+    const url = 'https://flutter.io';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -239,6 +248,13 @@ class _SettingPageState extends State<SettingPage> {
                         leading: Icon(CupertinoIcons.pencil_outline),
                         onPressed: (BuildContext context) {
                           launchEmailSubmission();
+                        },
+                      ),
+                      SettingsTile(
+                        title: '개인정보취급방침',
+                        leading: Icon(CupertinoIcons.text_quote),
+                        onPressed: (BuildContext context) {
+                          _launchURL();
                         },
                       ),
                     ])

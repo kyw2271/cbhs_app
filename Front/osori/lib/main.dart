@@ -91,6 +91,7 @@ class MyApp extends StatelessWidget {
           debugPrint("Successfully load menu");
           // Load Thumbnail Articles
           return CupertinoApp(
+            debugShowCheckedModeBanner: false,
             theme: CupertinoThemeData(brightness: Brightness.light),
             localizationsDelegates: [
               DefaultMaterialLocalizations.delegate,
