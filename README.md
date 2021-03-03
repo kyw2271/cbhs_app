@@ -1,5 +1,9 @@
 # cbhs app 제작
 
+## VER 0.1.0
+### IOS - https://apps.apple.com/kr/app/%EC%98%A4%EC%86%8C%EB%A6%AC-%EC%B6%A9%EB%B6%81%ED%95%99%EC%82%AC-%EC%8B%9D%EB%8B%A8-qr-%EC%B6%9C%EC%9E%85-%EC%95%B1/id1556278144
+### Android - 개발중
+
 ## 구현 목표
 1. 식사, 공지 파싱 엔진  및 기초 프론트/백엔드 서서울관 출입- ver 0.1
 2. 식사 위젯 (아이폰, 안드로이드 native code)
