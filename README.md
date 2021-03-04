@@ -2,7 +2,7 @@
 
 ## VER 0.1.0
 ### IOS - https://apps.apple.com/kr/app/%EC%98%A4%EC%86%8C%EB%A6%AC-%EC%B6%A9%EB%B6%81%ED%95%99%EC%82%AC-%EC%8B%9D%EB%8B%A8-qr-%EC%B6%9C%EC%9E%85-%EC%95%B1/id1556278144
-### Android - 개발중
+### Android - 
 
 ## 구현 목표
    지역학사 홈페이지에 공지되어있는 식단,공지,출입 정보등을 보다 접근성이 쉽게 어플리케이션으로 포팅
