@@ -182,7 +182,7 @@ class _SettingPageState extends State<SettingPage> {
                       },
                     ),
                     SettingsTile(
-                      title: 'QR 출입 로그인 (서서울관)',
+                      title: '출입시스템 설정 (서서울관)',
                       subtitle: setting.get('id').toString(),
                       leading: Icon(CupertinoIcons.qrcode),
                       onPressed: (BuildContext context) {

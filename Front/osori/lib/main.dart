@@ -32,6 +32,10 @@ void main() async {
     settingHive.put('start', '2');
   }
 
+  if (settingHive.get('size') == null) {
+    settingHive.put('size', 250);
+  }
+
   // check if location is "0"
   // if (settingHive.get('location') == "0") {
   //   runApp(LocationScreen());

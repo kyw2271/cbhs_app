@@ -1,0 +1,51 @@
+{
+  "buildCommand" : "prepareForIndexing",
+  "configuredTargets" : [
+    {
+      "guid" : "2e6b23e3e8956b467e56c8bd7bfee5a69da425bb6d6d5d8dbb95e4afffb82217"
+    },
+    {
+      "guid" : "2e6b23e3e8956b467e56c8bd7bfee5a6312b4bc59bbbe2c06c205bf4da6737f5"
+    },
+    {
+      "guid" : "2e6b23e3e8956b467e56c8bd7bfee5a6d6b4f9cd0664e4caf87e0ca8814c7d76"
+    },
+    {
+      "guid" : "2e6b23e3e8956b467e56c8bd7bfee5a6e8cd2c510461aaa30819666e6706f51b"
+    },
+    {
+      "guid" : "2e6b23e3e8956b467e56c8bd7bfee5a622ec4dd39c676b6a04edc68704df6cd0"
+    }
+  ],
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/sunghyunyoo/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/sunghyunyoo/Library/Developer/Xcode/DerivedData/Pods-bjbhyupypkyrvadrkisolrpyaljq/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/sunghyunyoo/Library/Developer/Xcode/DerivedData/Pods-bjbhyupypkyrvadrkisolrpyaljq/Index/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : false
+}

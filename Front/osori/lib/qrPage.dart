@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:osori/component.dart';
 import 'package:osori/errorCard.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -15,25 +17,31 @@ class QrPage extends StatefulWidget {
 class _QrPageState extends State<QrPage> {
   var setting = Hive.box('setting');
 
-  Future<int> loadQRcode(int id, int pw) async {
-    int code;
-    debugPrint("NOW FETCH QR FUNC");
+  Timer timer;
 
+  Future<int> loadQRcode(String id, String pw) async {
+    int code;
     // Error .. no ID/PW ..
-    if (id == 0 || pw == 0) {
+    if (id == '0' || pw == '0') {
       code = 0;
     } else {
       var url = "http://ai.allitc.com:8080/cbhs_web/login.do";
-      var body = jsonEncode({"userId": id, "userPw": pw});
+      var body = '{\"userId\":' + id + ',\"userPw\":' + pw + '}';
 
       await http
           .post(url,
               headers: <String, String>{'contentType': "application/json"},
               body: body)
           .then((value) {
-        String aStr = value.body
-            .replaceAll(new RegExp(r'[^0-9]'), ''); // Extract only numbers
-        code = int.parse(aStr);
+        String aStr = value.body;
+        RegExp reg = new RegExp(r'[0-9]{1,10}');
+
+        if (reg.firstMatch(aStr) == null) {
+          debugPrint("Parameter Error - Invaild Account");
+          code = null;
+        } else {
+          code = int.parse(reg.stringMatch(aStr));
+        }
       });
     }
     debugPrint("Personal Code : " + code.toString());
@@ -53,27 +61,41 @@ class _QrPageState extends State<QrPage> {
           style: TextStyle(fontSize: 18),
         ),
       ),
-      child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          padding: EdgeInsets.only(
-              top: 70, bottom: 50), // padding for tab bar and navigation bar.
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: 20),
-                futureQRBuilder(),
-              ],
-            ),
-          )),
+      child: SafeArea(
+          child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 14), // padding for tab bar and navigation bar.
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(flex: 3, child: futureQRBuilder()),
+            Expanded(
+                flex: 2,
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: CircleButton(
+                            width: double.infinity,
+                            text: "새로고침",
+                            onPressed: () {
+                              setState(() {});
+                            })))),
+          ],
+        ),
+      )),
     );
   }
 
   Widget futureQRBuilder() {
+    // print(setting.get('id') + " : " + setting.get('pw'));
+    // print(jsonEncode({"userId": 123456, "userPw": 987654}));
     return FutureBuilder(
-      future: loadQRcode(
-          int.parse(setting.get('id')), int.parse(setting.get('pw'))),
+      future: loadQRcode(setting.get('id'), setting.get('pw')),
       builder: (context, snapshot) {
         // Once complete, show applications.
         if (snapshot.connectionState == ConnectionState.done) {
@@ -82,36 +104,36 @@ class _QrPageState extends State<QrPage> {
           // Load Thumbnail Articles
 
           if (snapshot.data == 0) {
-            return ErrorCard(errorString: "(서서울관) 설정 탭에서 로그인을 먼저 진행해주세요!");
+            return ErrorCard(
+              errorString: "(서서울관)\n설정 탭에서 로그인\n먼저 진행해주세요!",
+              size: 250,
+            );
           } else if (snapshot.data == null) {
-            return ErrorCard(errorString: "로그인 정보에 오류가 있습니다!");
+            return ErrorCard(
+                errorString: "로그인 정보에 오류가 있습니다!", size: setting.get('size'));
           } else {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                QrImage(
-                  data: snapshot.data.toString(),
-                  size: 300,
+            return Container(
+              decoration: basicBox,
+              child: Align(
+                alignment: Alignment.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    QrImage(
+                      data: snapshot.data.toString(),
+                      size: setting.get('size'),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(right: 5),
+                      child: Text(
+                        "Personal Code : " + snapshot.data.toString(),
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  height: 20,
-                  padding: EdgeInsets.only(right: 5),
-                  child: Text(
-                    "Personal Code : " + snapshot.data.toString(),
-                    style: TextStyle(fontSize: 14, color: Colors.grey),
-                  ),
-                ),
-                Container(
-                    margin: EdgeInsets.only(top: 100),
-                    child: CupertinoButton(
-                        child: Text(
-                          "새로고침",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        onPressed: () {
-                          setState(() {});
-                        })),
-              ],
+              ),
             );
           }
         }
@@ -132,5 +154,21 @@ class _QrPageState extends State<QrPage> {
         );
       },
     );
+  }
+}
+
+class Code {
+  String data;
+
+  Code({this.data});
+
+  Code.fromJson(Map<String, dynamic> json) {
+    data = json['data'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['data'] = this.data;
+    return data;
   }
 }

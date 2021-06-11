@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
+import 'package:osori/component.dart';
 
 import 'errorCard.dart';
 import 'menu.dart';
@@ -38,8 +40,12 @@ class MealPage extends StatelessWidget {
     if (setting.get('location') == '0') {
       return SliverList(
         delegate: SliverChildBuilderDelegate(
-            (context, index) => ErrorCard(
-                  errorString: "설정 탭에서 학사를 먼저 선택해주세요!",
+            (context, index) => Container(
+                  padding: EdgeInsets.symmetric(horizontal: 14),
+                  child: ErrorCard(
+                    errorString: "설정 탭에서 학사를 먼저 선택해주세요!",
+                    size: 250,
+                  ),
                 ),
             childCount: 1),
       );
@@ -64,13 +70,18 @@ class MealPage extends StatelessWidget {
 
       // if location is "청주관",
     } else if (setting.get('location') == '3') {
-      return ErrorCard(
-        errorString: "Something Wrong",
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 14),
+        child: ErrorCard(
+          errorString: "Something Wrong",
+          size: 250,
+        ),
       );
       // else, There's something Wrong!
     } else {
       return ErrorCard(
         errorString: "Something Wrong",
+        size: 250,
       );
     }
   }
@@ -88,6 +99,22 @@ class MealCard extends StatelessWidget {
       @required this.lunch,
       @required this.dinner});
 
+  Widget isToday(String date) {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('yyyy-MM-dd');
+    String formattedDate = formatter.format(now);
+    print(formattedDate); // 2016-01-25
+
+    if (formattedDate == date) {
+      return Icon(
+        CupertinoIcons.checkmark_seal,
+        color: Colors.green,
+      );
+    } else {
+      return Container();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -96,25 +123,29 @@ class MealCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-              margin: EdgeInsets.only(bottom: 10),
-              child: Text(
-                date,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: const Color(0xff000000),
-                  fontWeight: FontWeight.w700,
-                ),
-              )),
-          Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: const Color(0xffffffff),
-            ),
+            decoration: basicBox,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10, top: 10),
+                        child: Text(
+                          date,
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: const Color(0xff000000),
+                            fontWeight: FontWeight.w700,
+                          ),
+                        )),
+                    isToday(date)
+                  ],
+                ),
+                Divider(),
                 MealCardMenu(
                   meal: "아침",
                   menu: breakfast,
