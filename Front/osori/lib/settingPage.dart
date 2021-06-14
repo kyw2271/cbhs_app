@@ -233,7 +233,7 @@ class _SettingPageState extends State<SettingPage> {
                               MaterialPageRoute(
                                   builder: (BuildContext context) => AboutPage(
                                         appName: "오소리",
-                                        appVersion: "0.1.0",
+                                        appVersion: "0.2.0",
                                         developers:
                                             "Sunghyun(StationSoen@github)\nYoungwoo(kyw2271@github)",
                                         logoDesigner:
