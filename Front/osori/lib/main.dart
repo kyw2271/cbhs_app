@@ -33,7 +33,7 @@ void main() async {
   }
 
   if (settingHive.get('size') == null) {
-    settingHive.put('size', 250);
+    settingHive.put('size', 250.0);
   }
 
   // check if location is "0"

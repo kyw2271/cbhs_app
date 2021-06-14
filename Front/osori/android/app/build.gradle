@@ -26,29 +26,46 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 30
+    
+    def keystoreProperties = new Properties()
+    def keystorePropertiesFile = rootProject.file('key.properties')
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
+   android {
+    
+        compileSdkVersion 30
 
-    defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.osori"
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    }
+        sourceSets {
+            main.java.srcDirs += 'src/main/kotlin'
+        }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+        defaultConfig {
+            // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+            applicationId "com.soen.osori"
+            minSdkVersion 16
+            targetSdkVersion 30
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+
+        signingConfigs {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                }
+            }
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
+
 
 flutter {
     source '../..'

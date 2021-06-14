@@ -1,4 +1,4 @@
-package com.example.osori
+package com.soen.osori
 
 import io.flutter.embedding.android.FlutterActivity
 

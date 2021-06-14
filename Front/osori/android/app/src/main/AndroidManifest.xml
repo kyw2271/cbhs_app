@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.osori">
+    package="com.soen.osori">
    <application
-        android:label="osori"
+        android:label="오소리"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
