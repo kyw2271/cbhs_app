@@ -1,8 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.soen.osori">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="오소리"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/launcher_icon"
+        android:usesCleartextTraffic="true">
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
