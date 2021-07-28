@@ -102,7 +102,6 @@ class _QrPageState extends State<QrPage> {
           debugPrint(
               "Personal Code in QR Builder : " + snapshot.data.toString());
           // Load Thumbnail Articles
-
           if (snapshot.data == 0) {
             return ErrorCard(
               errorString: "(서서울관)\n설정 탭에서 로그인\n먼저 진행해주세요!",
