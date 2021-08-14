@@ -13,12 +13,14 @@ RUN apt install -y nano
 
 
 
-# 장고 및 파이썬 모듈
+# 장고 및 파이썬 모듈- 기본 설치
+
 COPY requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 
+#파이썬 모듈 종속성 - DB연결 추가파일
 RUN pip install psycopg2
 
 
@@ -26,16 +28,8 @@ RUN pip install psycopg2
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
 
+WORKDIR /web
 
-
-
-
-WORKDIR /usr/src/app
-COPY . .
 
 #cron
-
-
-
-EXPOSE 8000
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD python manage.py crontab add
