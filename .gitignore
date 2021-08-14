@@ -1,2 +1,3 @@
 ##db 폴더 무시
-Back/Ver. 1.0/db/
+*.env
+Back/Ver-1.0/db/
