@@ -25,6 +25,7 @@ from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 
 from menu_data.api.viesets import *
+from board.api.viesets import *
 
 admin.site.site_header = '오소리 관리사이트'
 admin.site.site_title = '오소리'
@@ -34,8 +35,11 @@ router.register('cbhs1', Cbhs1_Menu_ViewSet)
 router.register('cbhs2', Cbhs2_Menu_ViewSet)
 #router.register('cbhs3', Cbhs2_Menu_ViewSet)
 
+router.register('free', Free_BoardViewSet)
+router.register('notice', NoticeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^menu/', include((router.urls, 'menu_data'), namespace='api')),
+    url(r'', include((router.urls, 'server',), namespace='api')),
+    
 ]

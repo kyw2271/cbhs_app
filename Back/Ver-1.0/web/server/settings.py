@@ -154,3 +154,5 @@ CRONJOBS = [
      ('* */1 * * *', 'Menu_Paser.cron_menu_cbhs')
 
 ]
+
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1', '59.6.52.249','web']

@@ -10,7 +10,7 @@ RUN apt-get update
 RUN apt install -y cron
 RUN apt-get install -y tzdata
 RUN apt install -y nano
-
+RUN apt install -y gcc python3-dev
 
 
 # 장고 및 파이썬 모듈- 기본 설치
@@ -22,13 +22,17 @@ RUN pip install -r requirements.txt
 
 #파이썬 모듈 종속성 - DB연결 추가파일
 RUN pip install psycopg2
+RUN pip install uwsgi
 
 
 #시간 관련
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
 
+RUN mkdir /web
 WORKDIR /web
+ADD . .
+
 
 
 #cron

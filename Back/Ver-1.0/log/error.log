@@ -1,0 +1,35 @@
+2021/08/14 15:16:05 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:06 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:08 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:09 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:11 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:14 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:18 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:26 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:16:39 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/14 15:17:06 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:17:38 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:17:39 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:17:41 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:17:42 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:19:43 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:19:44 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:19:46 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:19:47 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:19:49 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:22:53 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:22:55 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:22:56 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:22:58 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:23:00 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:23:02 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:23:06 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:23:14 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:23:28 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:23:54 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:24:46 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 02:25:47 [emerg] 1#1: unexpected "}" in /etc/nginx/sites-enabled/nginx-app.conf:3
+2021/08/15 03:31:00 [error] 25#25: *1 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.19.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://unix:/web/apps.sock", host: "59.6.52.249"
+2021/08/15 05:03:57 [error] 26#26: *1 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.19.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://unix:/web/apps.sock", host: "59.6.52.249"
+2021/08/15 09:09:44 [error] 24#24: *1 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.19.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://unix:/web/apps.sock", host: "59.6.52.249"
+2021/08/15 12:07:09 [error] 31#31: *1 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.19.0.1, server: localhost, request: "GET /admin/ HTTP/1.1", upstream: "uwsgi://unix:/web/apps.sock", host: "59.6.52.249"
