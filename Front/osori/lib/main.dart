@@ -12,6 +12,7 @@ import 'package:osori/settingPage.dart';
 import 'package:http/http.dart' as http;
 
 import 'SplashScreen.dart';
+import 'boardPage.dart';
 import 'menu.dart';
 
 void main() async {
@@ -29,7 +30,7 @@ void main() async {
     }
   }
   if (settingHive.get('start') == null) {
-    settingHive.put('start', '2');
+    settingHive.put('start', '3');
   }
 
   if (settingHive.get('size') == null) {
@@ -132,6 +133,8 @@ class MyHome extends StatelessWidget {
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.doc_plaintext), label: "식단"),
     BottomNavigationBarItem(icon: Icon(CupertinoIcons.qrcode), label: "출입"),
+    BottomNavigationBarItem(
+        icon: Icon(CupertinoIcons.rectangle_grid_1x2), label: "게시판"),
     BottomNavigationBarItem(icon: Icon(CupertinoIcons.settings), label: "설정"),
   ];
 
@@ -143,7 +146,8 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        currentIndex: int.parse(setting.get('start')),
+        // currentIndex: int.parse(setting.get('start')),
+        currentIndex: 2,
         items: bottomItems,
         iconSize: 20,
       ),
@@ -157,6 +161,8 @@ class MyHome extends StatelessWidget {
             );
           case 1:
             return QrPage();
+          case 2:
+            return BoardPage();
           default:
             return SettingPage();
         }
