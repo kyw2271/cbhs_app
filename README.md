@@ -1,4 +1,9 @@
-# cbhs app 제작
+# 📍 현재 리뉴얼 작업 중입니다.
+[리뉴얼 Repository 바로가기](https://github.com/osori-develop/osori-app)
+
+---
+
+# 지역학사 식단 / 출입 앱, 오소리 제작
 
 ## VER 0.1.0
 ### [IOS](https://apps.apple.com/kr/app/%EC%98%A4%EC%86%8C%EB%A6%AC-%EC%B6%A9%EB%B6%81%ED%95%99%EC%82%AC-%EC%8B%9D%EB%8B%A8-qr-%EC%B6%9C%EC%9E%85-%EC%95%B1/id1556278144)
